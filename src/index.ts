@@ -6,15 +6,22 @@ const input1 = document.getElementById("num1") as HTMLInputElement;
 const input2 = document.getElementById("num2") as HTMLInputElement;
 const button = document.getElementById("button")!;
 const selOp = document.getElementById("selOperacao") as HTMLInputElement;
+
+const input1H = document.getElementById("num1H") as HTMLInputElement;
+const input2H = document.getElementById("num2H") as HTMLInputElement;
+const buttonH = document.getElementById("buttonH")!;
+const selOpH = document.getElementById("selOperacaoH") as HTMLInputElement;
+
+const divDec = document.getElementById("calcDec") as HTMLInputElement;
+const divHex = document.getElementById("calcHex") as HTMLInputElement;
+
 const selModo = document.getElementById("selModo") as HTMLInputElement;
 
 const resP = document.getElementById("result") as HTMLInputElement;
 
-function sum(a: number, b: number) {
-    return a + b;
-}
+divHex.style.display = "none";
 
-button.addEventListener("click", function () {
+function calcular(){
     var calculadora:ICalculadora;
     var modo = selModo.value;
     var n1 = 0;
@@ -22,18 +29,19 @@ button.addEventListener("click", function () {
     if(modo == "modoDecimal"){
         calculadora = new CalculadoraDecimal();
         
-     n1 = Number(input1.value);
-     n2 = Number(input2.value);
+        n1 = Number(input1.value);
+        n2 = Number(input2.value);
 
     }else{
         calculadora = new CalculadoraHexadecimal();
-    
+        n1 = Number(input1H.value);
+        n2 = Number(input2H.value);
     }
     
     var result = 0;
     //pega a operação
 
-    var op = selOp.value;
+    var op = selOp.value || selOpH.value;
     switch (op) {
         case "Adicao":
             result = calculadora.Adicao(n1, n2);
@@ -54,7 +62,19 @@ button.addEventListener("click", function () {
  
     resP.innerHTML = String(result);
 
+}
+
+button.addEventListener("click", calcular)
+buttonH.addEventListener("click", calcular)
+
+
+selModo.addEventListener("change", function(){
+    const modo = selModo.value;
+    if(modo == "modoDecimal"){
+        divDec.style.display = "block";
+        divHex.style.display = "none";
+    }else{
+        divDec.style.display = "none";
+        divHex.style.display = "block";
+    }
 })
-
-
-

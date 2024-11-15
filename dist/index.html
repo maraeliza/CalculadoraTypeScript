@@ -33,7 +33,7 @@
 		</select>
 	
 		<br><br>
-		<div class="input-group mb-3">
+		<div class="input-group mb-3"  id="calcDec">
 			<input placeholder="Digite o número aqui" class="form-control" type="number" id="num1">
 			<select class=" input-group-text form-select" id="selOperacao">
 				<option  value="Adicao">+</option>
@@ -43,6 +43,18 @@
 			</select>
 			<input  placeholder="Digite o número aqui" class="form-control" type="number" id="num2">
 			<button class="btn btn-primary" id="button">Calcular</button>
+	
+		</div>
+		<div class="input-group mb-3" id="calcHex">
+			<input placeholder="Digite o número aqui" class="form-control" type="text" id="num1H">
+			<select class=" input-group-text form-select" id="selOperacaoH">
+				<option  value="Adicao">+</option>
+				<option  value="Subtracao">-</option>
+				<option  value="Multiplicacao">*</option>
+				<option  value="Divisao">/</option>
+			</select>
+			<input  placeholder="Digite o número aqui" class="form-control" type="text" id="num2H">
+			<button class="btn btn-primary" id="buttonH">Calcular</button>
 	
 		</div>
 		<p class="text-left">Resultado: <span id="result">0</span> </p>
